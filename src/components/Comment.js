@@ -6,8 +6,7 @@ import {createCommentSelector} from '../selectors'
 function Comment({comment}) {
     return (
         <div>
-            /* TODO: попробовать Record */
-            {comment.get('text')} <b>by {comment.get('user')}</b>
+            {comment.text} <b>by {comment.user}</b>
         </div>
     )
 }
