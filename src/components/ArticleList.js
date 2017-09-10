@@ -16,15 +16,16 @@ class ArticleList extends Component {
     render() {
         console.log('---', 'rendering article list')
         const {openItemId, toggleOpenItem, articles} = this.props
-        const articleElements = articles.map(article => (
-            <li key={article.id}>
+        const articleElements = articles.map(article => {
+            let {id} = article;
+            return <li key={id}>
                 <Article
                     article={article}
-                    isOpen={article.id === openItemId}
-                    toggleOpen={toggleOpenItem(article.id)}
+                    isOpen={id === openItemId || id === articles[0].id}
+                    toggleOpen={toggleOpenItem(id)}
                 />
             </li>
-        ))
+        });
 
         return (
             <ul>

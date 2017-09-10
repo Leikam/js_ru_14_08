@@ -1,11 +1,13 @@
 import {createSelector} from 'reselect'
+import { map2array } from '../Utils'
 
 export const articlesSelector = state => state.articles
+export const articlesAsArraySelector = state => map2array(state.articles);
 export const filtersSelector = state => state.filters
 export const idSelector = (state, props) => props.id
 export const commentsSelector = state => state.comments
 
-export const filtratedArticlesSelector = createSelector(articlesSelector, filtersSelector, (articles, filters) => {
+export const filtratedArticlesSelector = createSelector(articlesAsArraySelector, filtersSelector, (articles, filters) => {
     console.log('---', 'recomputing filtrated articles')
     const {selected, dateRange: {from, to}} = filters
 
